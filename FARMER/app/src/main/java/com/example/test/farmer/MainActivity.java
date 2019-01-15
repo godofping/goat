@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                if (url.contains("mobile-logout.php")) {
+                if (url.contains("exit.php")) {
                     finish();
                     return true;
                 }
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog = ProgressDialog.show(MainActivity.this, null,
                         "Loading");
-//                    dialog.setCancelable(true);
+                    dialog.setCancelable(true);
                 super.onPageStarted(view, url, favicon);
             }
 
@@ -126,9 +126,11 @@ class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void runToast(String toast) {
-        Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+    public void runToast() {
+        Toast.makeText(mContext, "test", Toast.LENGTH_LONG).show();
     }
+
+
 
 
 }

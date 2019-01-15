@@ -31,36 +31,13 @@ include('../connection.php');
   </head>
   <body class="bg-light">
   
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 pt-5">
-          <h5 class="text-center font-weight-bold">MENU</h5>
-        </div>
-       </div>
-
-      <div class="row pt-3">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-
-   
-
-          <a href="open-qrcode-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">Add livestock</button></a>
-          <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
-          
-          <a href="exit.php"><button type="text" class="btn btn-block btn-secondary mt-3">Exit</button></a>
-             
- 
-      
-        </div>
-        <div class="col-md-4"></div>
-
-      </div>
+    
 
         
      
     </div>
 
-
+    <script type="text/javascript">Android.runToast();</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>

@@ -34,7 +34,7 @@ include('../connection.php');
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
-          <h5 class="text-center font-weight-bold">MENU</h5>
+          <h5 class="text-center font-weight-bold">ADD LIVESTOCK</h5>
         </div>
        </div>
 
@@ -42,14 +42,16 @@ include('../connection.php');
         <div class="col-md-4"></div>
         <div class="col-md-4">
 
-   
+   		<div class="form-group">
+          <label for="username">Weight</label>
+          <input type="number" class="form-control" name="weight" id="weight" required="">
+        </div>
+     	
+     	<div class="form-group">
+          <label for="username">Sold Date</label>
+          <input type="text" class="form-control" name="whenToSold" id="whenToSold" required="">
+        </div>
 
-          <a href="open-qrcode-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">Add livestock</button></a>
-          <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
-          
-          <a href="exit.php"><button type="text" class="btn btn-block btn-secondary mt-3">Exit</button></a>
-             
- 
       
         </div>
         <div class="col-md-4"></div>

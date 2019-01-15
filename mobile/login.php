@@ -1,6 +1,10 @@
 <?php
 include('../connection.php');
 
+if (isset($_SESSION['farmerId'])) {
+  header("Location: menu.php");
+}
+
 ?>
 
 <!doctype html>
@@ -60,8 +64,8 @@ include('../connection.php');
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" class="form-control" name="username" id="username" required="">
-              
                 </div>
+
                 <div class="form-group">
                   <label for="password">Password</label>
                   <input type="password" class="form-control" name="password" id="password" required="">

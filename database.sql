@@ -41,11 +41,11 @@ CREATE TABLE `credential_table` (
   `username` varchar(60) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`credentialId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `credential_table` */
 
-insert  into `credential_table`(`credentialId`,`username`,`password`) values (3,'admin','admin'),(4,'870b','870b'),(5,'b509','b509'),(6,'31ce','31ce'),(7,'8999','8999'),(8,'3a2e','3a2e'),(9,'dec6','dec6');
+insert  into `credential_table`(`credentialId`,`username`,`password`) values (3,'admin','admin'),(4,'870b','870b'),(5,'b509','b509'),(6,'31ce','31ce'),(7,'8999','8999'),(8,'3a2e','3a2e'),(9,'dec6','dec6'),(10,'7ed5','7ed5');
 
 /*Table structure for table `farmer_table` */
 
@@ -59,11 +59,11 @@ CREATE TABLE `farmer_table` (
   PRIMARY KEY (`farmerId`),
   KEY `FK_farmer_table` (`credentialId`),
   CONSTRAINT `FK_farmer_table` FOREIGN KEY (`credentialId`) REFERENCES `credential_table` (`credentialId`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `farmer_table` */
 
-insert  into `farmer_table`(`farmerId`,`farmerName`,`farmerAddress`,`credentialId`) values (8,'asd1','dadd1',7),(9,'asd','asdddd',8),(10,'1123','123333',9);
+insert  into `farmer_table`(`farmerId`,`farmerName`,`farmerAddress`,`credentialId`) values (8,'asd11','dadd1',7),(9,'asd','asdddd',8),(11,'31','123',10);
 
 /*Table structure for table `livestock_table` */
 
@@ -72,11 +72,11 @@ DROP TABLE IF EXISTS `livestock_table`;
 CREATE TABLE `livestock_table` (
   `liveStockId` int(6) NOT NULL AUTO_INCREMENT,
   `liveStockQRId` varchar(60) DEFAULT NULL,
-  `kilo` int(4) DEFAULT NULL,
-  `gender` varchar(60) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `weight` int(4) DEFAULT NULL,
+  `whenToSold` date DEFAULT NULL,
   `farmerId` int(6) DEFAULT NULL,
   `gps` varchar(60) DEFAULT NULL,
+  `dateAdded` date DEFAULT NULL,
   PRIMARY KEY (`liveStockId`),
   KEY `FK_livestock_table` (`farmerId`),
   CONSTRAINT `FK_livestock_table` FOREIGN KEY (`farmerId`) REFERENCES `farmer_table` (`farmerId`)
@@ -124,10 +124,11 @@ DROP TABLE IF EXISTS `livestock_view`;
 /*!50001 CREATE TABLE  `livestock_view`(
  `liveStockId` int(6) ,
  `liveStockQRId` varchar(60) ,
- `kilo` int(4) ,
- `gender` varchar(60) ,
- `date` date ,
+ `weight` int(4) ,
+ `whenToSold` date ,
  `farmerId` int(6) ,
+ `gps` varchar(60) ,
+ `dateAdded` date ,
  `farmerName` varchar(60) ,
  `farmerAddress` varchar(60) ,
  `credentialId` int(6) 
@@ -152,7 +153,7 @@ DROP TABLE IF EXISTS `livestock_view`;
 /*!50001 DROP TABLE IF EXISTS `livestock_view` */;
 /*!50001 DROP VIEW IF EXISTS `livestock_view` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `livestock_view` AS select `livestock_table`.`liveStockId` AS `liveStockId`,`livestock_table`.`liveStockQRId` AS `liveStockQRId`,`livestock_table`.`kilo` AS `kilo`,`livestock_table`.`gender` AS `gender`,`livestock_table`.`date` AS `date`,`livestock_table`.`farmerId` AS `farmerId`,`farmer_table`.`farmerName` AS `farmerName`,`farmer_table`.`farmerAddress` AS `farmerAddress`,`farmer_table`.`credentialId` AS `credentialId` from (`livestock_table` join `farmer_table` on((`livestock_table`.`farmerId` = `farmer_table`.`farmerId`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `livestock_view` AS select `livestock_table`.`liveStockId` AS `liveStockId`,`livestock_table`.`liveStockQRId` AS `liveStockQRId`,`livestock_table`.`weight` AS `weight`,`livestock_table`.`whenToSold` AS `whenToSold`,`livestock_table`.`farmerId` AS `farmerId`,`livestock_table`.`gps` AS `gps`,`livestock_table`.`dateAdded` AS `dateAdded`,`farmer_table`.`farmerName` AS `farmerName`,`farmer_table`.`farmerAddress` AS `farmerAddress`,`farmer_table`.`credentialId` AS `credentialId` from (`livestock_table` join `farmer_table` on((`livestock_table`.`farmerId` = `farmer_table`.`farmerId`))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
