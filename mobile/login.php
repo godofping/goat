@@ -17,24 +17,30 @@ include('../connection.php');
 
     <style type="text/css">
      
-      *{
-          outline: 0 !important;
-      }
-
-       a:hover, a:visited, a:link, a:active
+      a:hover, a:visited, a:link, a:active
       {
           text-decoration: none !important;
+          outline: none;
+          box-shadow: none;
+      }
+        
+
+       button:hover, button:visited, button:link, button:active
+      {
+          text-decoration: none !important;
+          outline: none;
+          box-shadow: none;
       }
           
     </style>
 
   </head>
-  <body class="blue">
+  <body class="bg-light">
   
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
-          <h1 class="text-center">FARMER LOGIN PAGE</h1>
+          <h5 class="text-center font-weight-bold">FARMER LOGIN PAGE</h5>
         </div>
        </div>
 

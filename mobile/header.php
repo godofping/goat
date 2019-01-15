@@ -20,8 +20,20 @@ else
     <title>GOAT QR CODE</title>
     <style type="text/css">
      
-      *{
-          outline: 0 !important;
+ 
+        a:hover, a:visited, a:link, a:active
+      {
+          text-decoration: none !important;
+          outline: none;
+          box-shadow: none;
+      }
+        
+
+       button:hover, button:visited, button:link, button:active
+      {
+          text-decoration: none !important;
+          outline: none;
+          box-shadow: none;
       }
           
     </style>

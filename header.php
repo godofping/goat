@@ -1,6 +1,6 @@
 <?php
 include('connection.php');
-if (isset($_SESSION['adminId']) or isset($_SESSION['farmerId'])) {
+if (isset($_SESSION['adminId'])) {
 }
 else
 {
@@ -26,9 +26,7 @@ else
       ADMIN DASHBOARD
     <?php endif ?>
 
-    <?php if (isset($_SESSION['farmerId'])): ?>
-      FARMER DASHBOARD
-    <?php endif ?>
+
       
     </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,13 +53,7 @@ else
 
     <?php endif ?>
 
-    <?php if (isset($_SESSION['farmerId'])): ?>
-      <li class="nav-item <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'livestocks'): ?>
-        active
-      <?php endif ?>">
-      <a class="nav-link" href="livestocks.php">Livestocks</a>
-      </li>
-    <?php endif ?>
+
 
 
 
