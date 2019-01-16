@@ -34,6 +34,8 @@ include('../connection.php');
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
+        	<button type="text" class="btn btn-block btn-warning mb-4" onclick="location.reload();">Reload</button>
+        	<a href="menu.php"><button type="text" class="btn btn-block btn-warning mb-4">Back</button></a>
           <h5 class="text-center font-weight-bold">ADD LIVESTOCK</h5>
         </div>
        </div>
@@ -42,7 +44,21 @@ include('../connection.php');
         <div class="col-md-4"></div>
         <div class="col-md-4">
 
+
+
        <p><?php echo $_GET['data']; ?></p>
+       <p><?php 
+
+       		echo $_GET['mylocation'];
+
+ 		// $mylocation =  $_GET['mylocation'];
+
+   //     	$mylocation = str_split(":", $mylocation);
+  
+   //     	echo $mylocation[0];
+
+       ?></p>
+
 
    		<div class="form-group">
           <label for="username">Weight</label>

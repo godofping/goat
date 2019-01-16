@@ -48,8 +48,6 @@ include('../connection.php');
 
           <a href="open-qr-code-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">QR Code Scanner</button></a>
 
-          <button type="text" class="btn btn-block btn-secondary mt-3" id="getGPS">GET GPS</button>
-
           <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
           
           <a href="exit.php"><button type="text" class="btn btn-block btn-secondary mt-3">Exit</button></a>
@@ -68,11 +66,4 @@ include('../connection.php');
 
     <?php include('footer.php'); ?>
 
-    <script type="text/javascript">
-      $('#getGPS').click(function(){
-
-          Android.getGPS();
-
-      });
-
-  </script>
+ 

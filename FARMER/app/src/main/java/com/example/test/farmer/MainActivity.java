@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private WebView mWebView;
     ProgressDialog dialog;
     int test = 0;
-    String mylocation;
+    static String mylocation;
 
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                mylocation = location.getLatitude() + "," + location.getLongitude();
-                Log.d("Location rex:", mylocation);
+                mylocation = location.getLatitude() + ":" + location.getLongitude();
+                Log.d("the coordinates:", mylocation);
 
             }
 
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
     public void runQrCodeScanner(){
         IntentIntegrator integrator = new IntentIntegrator(activity);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Scan");
+        integrator.setPrompt("Please scan the QR Code of the goat");
         integrator.setCameraId(0);
         integrator.setBeepEnabled(false);
         integrator.setBarcodeImageEnabled(false);
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                mWebView.loadUrl("http://192.168.1.6/goat/mobile/add-livestocks.php?data=" + result.getContents() );
+                mWebView.loadUrl("http://192.168.1.6/goat/mobile/add-livestocks.php?data=" + result.getContents()+"&mylocation=" + mylocation );
             }
         }
         else
@@ -241,6 +241,8 @@ public class MainActivity extends AppCompatActivity {
 
 
  class WebAppInterface {
+
+
 
     Context mContext;
 
@@ -264,15 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-     @JavascriptInterface
-     public void getGPS() {
 
-         MainActivity ma = new MainActivity();
-
-         Toast.makeText(mContext,  ma.mylocation,Toast.LENGTH_LONG).show();
-
-
-     }
 
 
 
