@@ -61,25 +61,7 @@ include('../connection.php');
 
        ?></p>
 
-       <p><?php 
-        $lat="54.1456123";
-		$long = "10.413456";
 
-		$url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$long&sensor=false&api=AIzaSyC3CL__ArRSv8my9WeW3ealb1WOquARXJA";
-
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_HEADER, false);
-		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_ENCODING, "");
-		$curlData = curl_exec($curl);
-		curl_close($curl);
-
-		$address = json_decode($curlData);
-		print_r($address);
-
-        ?></p>
 
 
    		<div class="form-group">
@@ -103,10 +85,24 @@ include('../connection.php');
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+
+<?php include('footer.php'); ?>
+
+<script type="text/javascript">
+	
+
+	  $.ajax({
+
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCrM94NRHiWS652rYp3jenICI1Z24BH4dM",
+            data: "{}",
+            dataType: "json",
+            success: function (data) {
+                alert(data);
+            },
+            error: function (result) {
+                alert("Error");
+            }
+        });
+</script>
