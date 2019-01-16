@@ -42,6 +42,8 @@ include('../connection.php');
         <div class="col-md-4"></div>
         <div class="col-md-4">
 
+       <p><?php echo $_GET['data']; ?></p>
+
    		<div class="form-group">
           <label for="username">Weight</label>
           <input type="number" class="form-control" name="weight" id="weight" required="">

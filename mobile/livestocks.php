@@ -34,7 +34,7 @@ include('../connection.php');
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
-        	
+
         	<a href="menu.php"><button type="text" class="btn btn-block btn-warning mb-4">Back</button></a>
 
           <h5 class="text-center font-weight-bold">LIVESTOCKS</h5>
@@ -51,6 +51,7 @@ include('../connection.php');
 			      <th scope="col">#</th>
 			      <th scope="col">Kilo</th>
 			      <th scope="col">Sold Date</th>
+			      <th scope="col">Location</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -61,6 +62,7 @@ include('../connection.php');
 			      <th scope="row"><?php echo $res['liveStockId']; ?></th>
 			      <td><?php echo $res['weight']; ?></td>
 			      <td><?php echo $res['whenToSold']; ?></td>
+			      <td><?php echo $res['gps']; ?></td>
 			    </tr>
 
 			    <?php } ?>

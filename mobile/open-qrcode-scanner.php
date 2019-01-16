@@ -37,7 +37,7 @@ include('../connection.php');
      
     </div>
 
-    <script type="text/javascript">Android.runToast();</script>
+    <script type="text/javascript">Android.openScanner();</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>

@@ -1,9 +1,12 @@
 package com.example.test.farmer;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +16,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mWebView = (WebView) findViewById(R.id.mainWebView);
         mWebView.loadUrl("http://192.168.1.6/goat/mobile/login.php");
@@ -113,11 +120,47 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    final Activity activity = this;
+    public void runQrCodeScanner(){
+        IntentIntegrator integrator = new IntentIntegrator(activity);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
+    }
 
-}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null){
+            if(result.getContents() == null)
+            {
+                Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            }
+            else
+            {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                mWebView.loadUrl("http://192.168.1.6/goat/mobile/add-livestocks.php?data=" + result.getContents() );
+            }
+        }
+        else
+        {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
+    }
 
 
-class WebAppInterface {
+} //end mainactivity class
+
+
+ class WebAppInterface {
 
     Context mContext;
 
@@ -128,6 +171,15 @@ class WebAppInterface {
     @JavascriptInterface
     public void runToast() {
         Toast.makeText(mContext, "test", Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+    @JavascriptInterface
+    public void openScanner() {
+
+        ((MainActivity)mContext).runQrCodeScanner();
     }
 
 
