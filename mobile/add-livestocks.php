@@ -59,13 +59,36 @@ include('../connection.php');
 
        	$longitude = $mylocation[1];
 
+   
+
+        $qrcodeid = explode("qrcodeid=",$_GET['data']);
+
+        $qrcodeid = $qrcodeid[1];
+
        ?></p>
+
+       <?php
+
+
+       if (substr(base64_decode($qrcodeid), 0,10) == "HALALGOATS" ) {
+        $qry = mysqli_query($connection, "select * from livestock_table where liveStockQRId = '" . $qrcodeid  . "'");
+          if (mysqli_num_rows($qry) > 0) {
+             header("Location: qrcode-invalid.php?error=2");
+          }
+       }
+       else
+       {
+          header("Location: qrcode-invalid.php?error=1");
+
+       }
+
+       ?>
 
 
       <form method="POST" action="mobile-controller.php">
         <div class="form-group">
           <label for="liveStockQRId">QR Code ID</label>
-          <textarea class="form-control" name="liveStockQRId" id="liveStockQRId" rows = "2" disabled=""><?php echo $_GET['data']; ?></textarea> 
+          <textarea class="form-control" name="liveStockQRId" id="liveStockQRId" rows = "2" disabled=""><?php echo $qrcodeid; ?></textarea> 
         </div>
 
 

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mWebView = (WebView) findViewById(R.id.mainWebView);
-        mWebView.loadUrl("http://192.168.1.6/goat/mobile/login.php");
+        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
 
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
             }
 
-//                @Override
-//                public void onLoadResource(WebView view, String url) {
-//                    dialog.dismiss();
-//                    super.onLoadResource(view, url);
-//                }
+                @Override
+                public void onLoadResource(WebView view, String url) {
+                    dialog.dismiss();
+                    super.onLoadResource(view, url);
+                }
 
             // This method will be triggered when error page appear
             @Override
@@ -224,8 +224,8 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                mWebView.loadUrl("http://192.168.1.6/goat/mobile/add-livestocks.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+                Toast.makeText(this, "Successfully scanned", Toast.LENGTH_LONG).show();
+                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/add-livestocks.php?data=" + result.getContents()+"&mylocation=" + mylocation );
             }
         }
         else
