@@ -85,24 +85,34 @@ include('../connection.php');
     </div>
 
 
+<button id="test">ASDASD</button>
+
 
 <?php include('footer.php'); ?>
 
+
 <script type="text/javascript">
-	
 
-	  $.ajax({
 
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCrM94NRHiWS652rYp3jenICI1Z24BH4dM",
-            data: "{}",
-            dataType: "json",
-            success: function (data) {
-                alert(data);
-            },
-            error: function (result) {
-                alert("Error");
-            }
-        });
+    $.ajax({
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=6.69133463,124.6733888&result_type=route&key=AIzaSyCrM94NRHiWS652rYp3jenICI1Z24BH4dM',
+        dataType: 'json',
+        success: function(json) {
+
+          datas = JSON.stringify(json)
+
+          var obj = JSON.parse(datas);
+
+
+          console.log(obj.results[0].formatted_address);
+
+
+        }
+    });
+
+
+
+
 </script>
+
+

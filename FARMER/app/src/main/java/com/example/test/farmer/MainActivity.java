@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                mylocation = location.getLatitude() + ":" + location.getLongitude();
+                mylocation = location.getLatitude() + "," + location.getLongitude();
                 Log.d("the coordinates:", mylocation);
 
             }
