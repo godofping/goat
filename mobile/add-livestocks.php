@@ -46,7 +46,7 @@ include('../connection.php');
 
 
 
-       <p><?php echo $_GET['data']; ?></p>
+    
        <p><?php 
 
 
@@ -62,17 +62,34 @@ include('../connection.php');
        ?></p>
 
 
+      <form method="POST" action="mobile-controller.php">
+        <div class="form-group">
+          <label for="liveStockQRId">QR Code ID</label>
+          <textarea class="form-control" name="liveStockQRId" id="liveStockQRId" rows = "2" disabled=""><?php echo $_GET['data']; ?></textarea> 
+        </div>
 
 
-   		<div class="form-group">
-          <label for="username">Weight</label>
-          <input type="number" class="form-control" name="weight" id="weight" required="">
+        <div class="form-group">
+            <label for="gps">Location and GPS Coordinates</label>
+            <textarea class="form-control" name="gps" id="gps" required="" rows = "3" disabled=""></textarea> 
         </div>
-     	
-     	<div class="form-group">
-          <label for="username">Sold Date</label>
-          <input type="text" class="form-control" name="whenToSold" id="whenToSold" required="">
+
+
+        <div class="form-group">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="weight" required="">
         </div>
+        
+        <div class="form-group">
+            <label for="whenToSold">Disposal Date</label>
+            <input type="date" class="form-control" name="whenToSold" id="whenToSold" required="">
+        </div>
+
+        <button type="submit" class="btn btn-block btn-success mb-4">Add</button>
+        <input type="text" name="from" value="add-livestock" hidden="">
+        <input type="text" name="gps" value="<?php echo $_GET['mylocation'] ?>" hidden="">
+
+      </form>
 
       
         </div>
@@ -85,7 +102,6 @@ include('../connection.php');
     </div>
 
 
-<button id="test">ASDASD</button>
 
 
 <?php include('footer.php'); ?>
@@ -95,7 +111,7 @@ include('../connection.php');
 
 
     $.ajax({
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=6.69133463,124.6733888&result_type=route&key=AIzaSyCrM94NRHiWS652rYp3jenICI1Z24BH4dM',
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=<?php echo $_GET['mylocation'] ?>&result_type=route&key=AIzaSyCrM94NRHiWS652rYp3jenICI1Z24BH4dM',
         dataType: 'json',
         success: function(json) {
 
@@ -104,7 +120,9 @@ include('../connection.php');
           var obj = JSON.parse(datas);
 
 
-          console.log(obj.results[0].formatted_address);
+         
+
+          $('#gps').text(obj.results[0].formatted_address + "\n" + "<?php echo $_GET['mylocation'] ?>");
 
 
         }
