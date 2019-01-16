@@ -44,7 +44,12 @@ include('../connection.php');
 
    
 
-          <a href="open-qrcode-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">Add livestock</button></a>
+          <a href="open-qrcode-scanner-for-registration.php"><button type="text" class="btn btn-block btn-secondary mt-3">Add livestock</button></a>
+
+          <a href="open-qr-code-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">QR Code Scanner</button></a>
+
+          <button type="text" class="btn btn-block btn-secondary mt-3" id="getGPS">GET GPS</button>
+
           <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
           
           <a href="exit.php"><button type="text" class="btn btn-block btn-secondary mt-3">Exit</button></a>
@@ -61,10 +66,13 @@ include('../connection.php');
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+    <?php include('footer.php'); ?>
+
+    <script type="text/javascript">
+      $('#getGPS').click(function(){
+
+          Android.getGPS();
+
+      });
+
+  </script>
