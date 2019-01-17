@@ -17,7 +17,7 @@ else
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>GOAT QR CODE</title>
+    <title>HALAL RAISED GOATS</title>
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
