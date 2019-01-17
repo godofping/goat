@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView = (WebView) findViewById(R.id.mainWebView);
         //for online
-        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/customer.php");
+        mWebView.loadUrl("http://halalraisedgoats.tk/login.php");
         //for offline
 //        mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php");
 
