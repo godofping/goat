@@ -14,9 +14,8 @@
 
    
 
-          <a href="open-qrcode-scanner-for-registration.php"><button type="text" class="btn btn-block btn-secondary mt-3">Add livestock</button></a>
+          <a href="open-qrcode-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">Scan Goat QR Code for viewing or registration</button></a>
 
-          <a href="open-qr-code-scanner.php"><button type="text" class="btn btn-block btn-secondary mt-3">QR Code Scanner</button></a>
 
           <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
           

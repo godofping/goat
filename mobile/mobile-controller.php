@@ -1,6 +1,6 @@
 <?php
 
-include("header.php");
+include("../connection.php");
 
 if (isset($_POST['from']) and $_POST['from'] == 'login') {
 	
@@ -27,5 +27,5 @@ if (isset($_GET['from']) and $_GET['from'] == 'exit') {
 	header("Location: exit.php");
 }
 
-include('footer');
+
 ?>

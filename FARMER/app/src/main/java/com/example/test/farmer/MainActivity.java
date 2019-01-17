@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         mWebView = (WebView) findViewById(R.id.mainWebView);
-        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
+//        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
+        mWebView.loadUrl("http://192.168.1.7/goat/mobile/login.php");
 
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -238,7 +239,9 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 Toast.makeText(this, "Successfully scanned", Toast.LENGTH_LONG).show();
-                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/add-livestocks.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+//                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+
+                mWebView.loadUrl("http://192.168.1.7/goat/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
             }
         }
         else
@@ -247,6 +250,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    //--------------------------------------------------------------------
+
+
 
 
 

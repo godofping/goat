@@ -6,8 +6,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
-        	<button type="text" class="btn btn-block btn-warning mb-4" onclick="location.reload();">Reload</button>
-        	<a href="menu.php"><button type="text" class="btn btn-block btn-warning mb-4">Back</button></a>
+       
+        	<a href="qrcode-data.php?mylocation=<?php echo $_GET['mylocation'] ?>&data=<?php echo $_GET['data'] ?>"><button type="text" class="btn btn-block btn-warning mb-4">Back</button></a>
           <h5 class="text-center font-weight-bold">ADD LIVESTOCK</h5>
         </div>
        </div>
@@ -16,45 +16,13 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
 
+        <?php 
+
+        $qrcodeid = $_GET['qrcodeid'];
 
 
-    
-       <p><?php 
+        ?>
 
-
-
- 		$mylocation =  $_GET['mylocation'];
-
-       	$mylocation = explode(",", $mylocation);
-  
-       	$latitude = $mylocation[0];
-
-       	$longitude = $mylocation[1];
-
-   
-
-        $qrcodeid = explode("qrcodeid=",$_GET['data']);
-
-        $qrcodeid = $qrcodeid[1];
-
-       ?></p>
-
-       <?php
-
-
-       if (substr(base64_decode($qrcodeid), 0,10) == "HALALGOATS" ) {
-        $qry = mysqli_query($connection, "select * from livestock_table where liveStockQRId = '" . $qrcodeid  . "'");
-          if (mysqli_num_rows($qry) > 0) {
-             header("Location: qrcode-invalid.php?error=2");
-          }
-       }
-       else
-       {
-          header("Location: qrcode-invalid.php?error=1");
-
-       }
-
-       ?>
 
 
       <form method="POST" action="mobile-controller.php">
