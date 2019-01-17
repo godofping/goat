@@ -39,7 +39,7 @@
 
 
         <div class="form-group">
-            <label for="weight">Weight</label>
+            <label for="weight">Weight (KG)</label>
             <input type="number" class="form-control" name="weight" id="weight" required="" min="1" max="999">
         </div>
         

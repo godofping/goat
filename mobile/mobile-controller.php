@@ -29,4 +29,25 @@ if (isset($_GET['from']) and $_GET['from'] == 'exit') {
 }
 
 
+if (isset($_POST['from']) and $_POST['from'] == 'update-profile') {
+	mysqli_query($connection, "update farmer_table set farmerName = '" . $_POST['farmerName'] . "', farmerAddress = '" . $_POST['farmerAddress'] . "' where farmerId = '" . $_SESSION['farmerId'] . "'");
+	header("Location: profile.php?status=profile");
+}
+
+
+if (isset($_POST['from']) and $_POST['from'] == 'update-password') {
+
+
+	mysqli_query($connection, "update credential_table set password = '" . $_POST['password'] . "' where credentialId = '" . $_POST['credentialId'] . "'");
+
+
+
+
+
+	header("Location: profile.php?status=password");
+}
+
+
+
+
 ?>

@@ -51,6 +51,13 @@ else
       </li>
 
 
+      <li class="nav-item <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'registered-livestocks'): ?>
+        active
+      <?php endif ?>">
+      <a class="nav-link" href="registered-livestocks.php">Registered Livestocks</a>
+      </li>
+
+
     <?php endif ?>
 
 

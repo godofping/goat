@@ -80,7 +80,7 @@ include('connection.php');
        		</div>
 
        		<div class="form-group">
-	            <label>Weight</label>
+	            <label>Weight (KG)</label>
 	            <input type="text" class="form-control" value="<?php echo $res['weight']; ?>">
         	</div>
 

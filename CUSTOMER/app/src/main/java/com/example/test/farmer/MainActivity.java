@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         //for online
 //        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
         //for offline
-        mWebView.loadUrl("http://192.168.1.7/goat/mobile/login.php");
+        mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php");
 
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 //for online
 //                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
                 //for offline
-                mWebView.loadUrl("http://192.168.1.7/goat/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+                mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php?data=" + result.getContents()+"&mylocation=" + mylocation );
             }
         }
         else

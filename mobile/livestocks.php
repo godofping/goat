@@ -21,7 +21,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Kilo</th>
+            <th scope="col">Weight (KG)</th>
             <th scope="col">Sold Date</th>
             <th scope="col">Location</th>
             <th scope="col">Date Added</th>

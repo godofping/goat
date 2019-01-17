@@ -18,6 +18,8 @@
 
 
           <a href="livestocks.php"><button type="text" class="btn btn-block btn-secondary mt-3">Livestocks</button></a>
+
+          <a href="profile.php"><button type="text" class="btn btn-block btn-secondary mt-3">Profile</button></a>
           
           <a href="mobile-controller.php?from=exit"><button type="text" class="btn btn-block btn-secondary mt-3">Exit</button></a>
              
