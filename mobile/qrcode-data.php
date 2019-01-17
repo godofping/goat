@@ -119,7 +119,7 @@
 
 
           <?php if ($status == 3): ?>
-          	<p class="text-center">This QR Code is available for live stock registration.</p>
+          	<p class="text-center">This QR Code is available for livestock registration.</p>
           	 <a href="add-livestocks.php?mylocation=<?php echo $_GET['mylocation'] ?>&qrcodeid=<?php echo $qrcodeid ?>&data=<?php echo $_GET['data'] ?>"><button type="text" class="btn btn-block btn-info mt-3">Register livestock</button></a>
           <?php endif ?>
              

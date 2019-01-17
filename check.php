@@ -37,13 +37,7 @@ include('connection.php');
 
         $qrcodeid =  $_GET['qrcodeid'];
    
-      
-  
-       	
-
-     
-
- 
+    
 
         $status = 0;
 
