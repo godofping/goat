@@ -1,34 +1,6 @@
-<?php
-include('../connection.php');
 
-?>
+<?php include('header.php'); ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-    <title>GOAT QR CODE</title>
-
-    <style type="text/css">
-     
-      *{
-          outline: 0 !important;
-      }
-
-       a:hover, a:visited, a:link, a:active
-      {
-          text-decoration: none !important;
-      }
-          
-    </style>
-
-  </head>
   <body class="bg-light">
   
     <div class="container-fluid">
@@ -100,7 +72,7 @@ include('../connection.php');
 
         <div class="form-group">
             <label for="weight">Weight</label>
-            <input type="number" class="form-control" name="weight" id="weight" required="">
+            <input type="number" class="form-control" name="weight" id="weight" required="" min="1" max="999">
         </div>
         
         <div class="form-group">
@@ -111,6 +83,9 @@ include('../connection.php');
         <button type="submit" class="btn btn-block btn-success mb-4">Add</button>
         <input type="text" name="from" value="add-livestock" hidden="">
         <input type="text" name="gps" value="<?php echo $_GET['mylocation'] ?>" hidden="">
+        <input type="text" name="liveStockQRId" value="<?php echo $qrcodeid; ?>" hidden="">
+        <input type="text" name="actualAddress" id="actualAddress" hidden="">
+
 
       </form>
 
@@ -146,6 +121,7 @@ include('../connection.php');
          
 
           $('#gps').text(obj.results[0].formatted_address + "\n" + "<?php echo $_GET['mylocation'] ?>");
+          $('#actualAddress').val(obj.results[0].formatted_address);
 
 
         }

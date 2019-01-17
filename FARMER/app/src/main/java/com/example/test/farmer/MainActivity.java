@@ -36,7 +36,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class MainActivity extends AppCompatActivity {
 
     private WebView mWebView;
-    ProgressDialog dialog;
+    static ProgressDialog dialog;
     int test = 0;
     static String mylocation;
 
@@ -62,7 +62,15 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     return true;
                 }
-                return false;
+
+                if(view.getHitTestResult().getType() > 0){
+                    // From a user click, handle it yourself.
+                    return false;
+                } else {
+                    // Nothing clicked, assumed to be a redirect, let it redirect.
+                    dialog.dismiss();
+                    return false;
+                }
 
             }
 
@@ -74,21 +82,24 @@ public class MainActivity extends AppCompatActivity {
                         "Loading");
                 dialog.setCancelable(true);
                 super.onPageStarted(view, url, favicon);
+
             }
 
             // This method will be triggered when the Page loading is completed
             @Override
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
-
                 super.onPageFinished(view, url);
+
             }
 
-                @Override
-                public void onLoadResource(WebView view, String url) {
-                    dialog.dismiss();
-                    super.onLoadResource(view, url);
-                }
+            //this method is unnecessary
+//            @Override
+//            public void onLoadResource(WebView view, String url) {
+//                dialog.dismiss();
+//                super.onLoadResource(view, url);
+//            }
+
 
             // This method will be triggered when error page appear
             @Override
@@ -211,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
         integrator.initiateScan();
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -237,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
 } //end mainactivity class
 
 
@@ -252,9 +267,10 @@ public class MainActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public void runToast() {
-        Toast.makeText(mContext, "test", Toast.LENGTH_LONG).show();
-    }
 
+
+
+    }
 
 
 

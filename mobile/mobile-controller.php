@@ -1,6 +1,6 @@
 <?php
 
-include("../connection.php");
+include("header.php");
 
 if (isset($_POST['from']) and $_POST['from'] == 'login') {
 	
@@ -16,6 +16,16 @@ if (isset($_POST['from']) and $_POST['from'] == 'login') {
 		}
 }
 
+if (isset($_POST['from']) and $_POST['from'] == 'add-livestock') {
+
+	$qry = mysqli_query($connection, "insert into livestock_table (liveStockQRId, weight, whenToSold, farmerId, gps, dateAdded, actualAddress) values ('" . $_POST['liveStockQRId'] . "', '" . $_POST['weight'] . "', '" . $_POST['whenToSold'] . "', '" . $_SESSION['farmerId'] . "', '" . $_POST['gps'] . "', '" . date('Y-m-d') . "', '" . $_POST['actualAddress'] . "')");
+}
 
 
+if (isset($_GET['from']) and $_GET['from'] == 'exit') {
+	session_destroy();
+	header("Location: exit.php");
+}
+
+include('footer');
 ?>

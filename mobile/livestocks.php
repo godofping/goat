@@ -1,34 +1,5 @@
-<?php
-include('../connection.php');
+<?php include('header.php'); ?>
 
-?>
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-    <title>GOAT QR CODE</title>
-
-    <style type="text/css">
-     
-      *{
-          outline: 0 !important;
-      }
-
-       a:hover, a:visited, a:link, a:active
-      {
-          text-decoration: none !important;
-      }
-          
-    </style>
-
-  </head>
   <body class="bg-light">
   
     <div class="container-fluid">
@@ -45,30 +16,38 @@ include('../connection.php');
         <div class="col-md-4"></div>
         <div class="col-md-4">
 
-   			<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">Kilo</th>
-			      <th scope="col">Sold Date</th>
-			      <th scope="col">Location</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <?php 
-			    $qry = mysqli_query($connection, "select * from livestock_view");
-			    while ($res = mysqli_fetch_assoc($qry)) { ?>
-			   	<tr>
-			      <th scope="row"><?php echo $res['liveStockId']; ?></th>
-			      <td><?php echo $res['weight']; ?></td>
-			      <td><?php echo $res['whenToSold']; ?></td>
-			      <td><?php echo $res['gps']; ?></td>
-			    </tr>
+   			<div class="table-responsive">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kilo</th>
+            <th scope="col">Sold Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Date Added</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+          $qry = mysqli_query($connection, "select * from livestock_view");
+          while ($res = mysqli_fetch_assoc($qry)) { ?>
+          <tr>
+            <th scope="row"><?php echo $res['liveStockId']; ?></th>
+            <td><?php echo $res['weight']; ?></td>
+            <td><?php echo $res['whenToSold']; ?></td>
+            <td>
+              <?php echo $res['actualAddress']; ?>
+              <br>
+              <?php echo $res['gps']; ?>
+            </td>
+            <td><?php echo $res['dateAdded']; ?></td>
+          </tr>
 
-			    <?php } ?>
+          <?php } ?>
 
-			  </tbody>
-			</table>
+        </tbody>
+      </table>  
+        </div>
 
        
       
