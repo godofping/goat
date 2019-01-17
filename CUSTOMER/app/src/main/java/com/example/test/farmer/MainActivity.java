@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView = (WebView) findViewById(R.id.mainWebView);
         //for online
-//        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
+        mWebView.loadUrl("http://halalraisedgoats.tk/mobile/login.php");
         //for offline
-        mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php");
+//        mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php");
 
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -243,9 +243,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Successfully scanned", Toast.LENGTH_LONG).show();
 
                 //for online
-//                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+                mWebView.loadUrl("http://halalraisedgoats.tk/mobile/qrcode-data.php?data=" + result.getContents()+"&mylocation=" + mylocation );
                 //for offline
-                mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php?data=" + result.getContents()+"&mylocation=" + mylocation );
+//                mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php?data=" + result.getContents()+"&mylocation=" + mylocation );
             }
         }
         else
