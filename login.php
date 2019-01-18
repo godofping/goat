@@ -15,14 +15,14 @@ if (isset($_SESSION['adminId'])) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>GOAT QR CODE</title>
+    <title>HALAL RAISED GOATS</title>
   </head>
   <body>
   
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 pt-5">
-          <h1 class="text-center">QR CODE GENERATOR FOR HALAL-RAISED GOATS</h1>
+          <h1 class="text-center">HALAL-RAISED GOATS</h1>
         </div>
        </div>
 

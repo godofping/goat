@@ -8,9 +8,14 @@ include('header.php');
     			<div class="jumbotron">
 
 
-                    <?php if (isset($_SESSION['adminId'])): ?>
-                        <h1>QR CODE GENERATOR FOR HALAL-RAISED GOATS</h1>   
-                    <?php endif ?>
+                  
+                        <h3 class="text-center font-weight-bold">HALAL-RAISED GOATS ADMIN DASHBOARD</h3>
+                        <hr>
+
+                        <h5 class="text-center">Number of registered livestocks:</h5>
+                        <h2 class="text-center font-weight-bold text-primary"><?php $qry = mysqli_query($connection, "select count(*) as result from livestock_view"); $res = mysqli_fetch_assoc($qry); echo $res['result']; ?></h2>
+
+                        <hr>
 
             
 		              
