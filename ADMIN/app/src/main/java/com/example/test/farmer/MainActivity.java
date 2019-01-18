@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog = ProgressDialog.show(MainActivity.this, null,
                         "Loading");
-                dialog.setCancelable(true);
+//                dialog.setCancelable(true);
                 super.onPageStarted(view, url, favicon);
 
             }
