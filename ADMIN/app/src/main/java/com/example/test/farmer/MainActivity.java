@@ -2,6 +2,7 @@ package com.example.test.farmer;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,6 +14,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,11 +28,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -35,26 +42,57 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    private WebView mWebView;
+
+    private  WebView mWebView;
     static ProgressDialog dialog;
     int test = 0;
     static String mylocation;
 
     private LocationManager locationManager;
     private LocationListener locationListener;
-
+    Button button;
+    Button button2;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        button= (Button) findViewById(R.id.button);
+        button2= (Button) findViewById(R.id.button2);
+        button.setVisibility(View.GONE);
+        button2.setVisibility(View.GONE);
         mWebView = (WebView) findViewById(R.id.mainWebView);
         //for online
         mWebView.loadUrl("http://halalraisedgoats.tk/login.php");
         //for offline
-//        mWebView.loadUrl("http://192.168.1.7/goat/mobile/customer.php");
+//        mWebView.loadUrl("http://192.168.1.8/goat/mobile/customer.php");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+                PrintDocumentAdapter printAdapter = mWebView.createPrintDocumentAdapter();
+                String jobName = getString(R.string.app_name) + " Document";
+                PrintAttributes.Builder builder = new PrintAttributes.Builder();
+                builder.setMediaSize(PrintAttributes.MediaSize.ISO_A5);
+                PrintJob printJob = printManager.print(jobName, printAdapter, builder.build());
+
+                if(printJob.isCompleted()){
+                    Toast.makeText(getApplicationContext(),"success", Toast.LENGTH_LONG).show();
+                }
+                else if(printJob.isFailed()){
+                    Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mWebView.goBack();
+                button.setVisibility(View.GONE);
+                button2.setVisibility(View.GONE);
+            }
+        });
 
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -65,17 +103,22 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     return true;
                 }
-
-                if(view.getHitTestResult().getType() > 0){
-                    // From a user click, handle it yourself.
+                else if (url.contains("generatecodes.php")) {
+                    button.setVisibility(View.VISIBLE);
+                    button2.setVisibility(View.VISIBLE);
                     return false;
-                } else {
-                    // Nothing clicked, assumed to be a redirect, let it redirect.
-                    dialog.dismiss();
+                }
+                else{
+                    button.setVisibility(View.GONE);
+                    button2.setVisibility(View.GONE);
                     return false;
                 }
 
+
             }
+
+
+
 
             // This method will be triggered when the Page Started Loading
             @Override
@@ -116,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
 
-
         });
 
 
@@ -126,6 +168,13 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+
+        //para bumilis
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        } else {
+            mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
 
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -211,6 +260,38 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButton("No", null)
                     .show();
         }
+
+        if (mWebView.getUrl().contains("generatecodes.php")) {
+        }
+        else
+        {
+            button.setVisibility(View.GONE);
+            button2.setVisibility(View.GONE);
+        }
+
+
+
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    if (mWebView.getUrl().contains("generatecodes.php")) {
+                    }
+                    else
+                    {
+                        button.setVisibility(View.GONE);
+                        button2.setVisibility(View.GONE);
+                        mWebView.goBack();
+                    }
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     final Activity activity = this;
@@ -227,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -253,6 +335,10 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
 
+
+
+
+
     }
 
     //--------------------------------------------------------------------
@@ -263,12 +349,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
 } //end mainactivity class
 
 
+
+
+
+
  class WebAppInterface {
-
-
 
     Context mContext;
 
@@ -276,28 +365,19 @@ public class MainActivity extends AppCompatActivity {
         mContext = c;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @JavascriptInterface
     public void runToast() {
 
-
-
+        Toast.makeText(mContext,"test", Toast.LENGTH_LONG).show();
     }
-
 
 
     @JavascriptInterface
     public void openScanner() {
 
         ((MainActivity)mContext).runQrCodeScanner();
-
-
     }
-
-
-
-
-
-
 
 
 }

@@ -22,8 +22,8 @@ include('header.php');
                 <th>Actual Address</th>
                 <th>GPS</th>
                 <th>Date Added</th>
-                <th>Farmer Name</th>
-                <th>Farmer Address</th>
+                <th>Raiser Name</th>
+                <th>Raiser Address</th>
                 <th>QR Code ID</th>
             </tr>
         </thead>

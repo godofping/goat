@@ -64,13 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 if (url.contains("exit.php")) {
                     finish();
                     return true;
-                }
-
-                if(view.getHitTestResult().getType() > 0){
-                    // From a user click, handle it yourself.
-                    return false;
                 } else {
-                    // Nothing clicked, assumed to be a redirect, let it redirect.
+
                     dialog.dismiss();
                     return false;
                 }
@@ -126,6 +121,13 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+
+        //para bumilis
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        } else {
+            mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
 
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);

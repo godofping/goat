@@ -4,11 +4,12 @@
 	<title></title>
 </head>
 <body>
-<a href="APK/ADMIN.apk" download>admin</a>
+	
+<a href="APK/ADMIN.apk" download>ADMIN</a>
 <br>
-<a href="APK/CUSTOMER.apk" download>customer</a>
+<a href="APK/CUSTOMER.apk" download>CUSTOMER</a>
 <br>
-<a href="APK/FARMER.apk" download>farmer</a>
+<a href="APK/RAISER.apk" download>RAISER</a>
 <br>
 
 </body>

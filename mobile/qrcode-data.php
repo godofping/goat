@@ -105,12 +105,12 @@
         	</div>
     		
     		<div class="form-group">
-	            <label>Farmer name</label>
+	            <label>Raiser name</label>
 	            <input type="text" class="form-control" value="<?php echo $res['farmerName']; ?>">
         	</div>
 
         	<div class="form-group">
-	          	<label>Farmer address</label>
+	          	<label>Raiser address</label>
 	          	<textarea class="form-control" rows = "2" disabled=""><?php echo $res['farmerAddress']; ?></textarea> 
        		</div>
 

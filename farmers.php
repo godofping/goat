@@ -7,10 +7,10 @@ include('header.php');
         <div class="col-md-12">
           <div class="jumbotron">
 
-                    <h2>Farmers</h2>
+                    <h2>Raisers</h2>
                     <hr>
 
-                    <button class="btn btn-success mt-2 mb-3" data-toggle="modal" data-target="#addModal">Add farmer</button>
+                    <button class="btn btn-success mt-2 mb-3" data-toggle="modal" data-target="#addModal">Add raiser</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

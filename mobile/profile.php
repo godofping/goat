@@ -44,12 +44,12 @@
         </div>
 
         <div class="form-group">
-            <label for="farmerName">Farmer Name</label>
+            <label for="farmerName">Raiser Name</label>
             <input type="text" class="form-control" name="farmerName" id="farmerName" required="" value="<?php echo $res['farmerName'] ?>">
         </div>
 
         <div class="form-group">
-            <label for="farmerAddress">Farmer Address</label>
+            <label for="farmerAddress">Raiser Address</label>
             <textarea class="form-control" name="farmerAddress" id="farmerAddress" rows="2" required=""><?php echo $res['farmerAddress'] ?></textarea>
         </div>
 

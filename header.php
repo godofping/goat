@@ -41,7 +41,7 @@ else
       <li class="nav-item <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'farmers'): ?>
         active
       <?php endif ?>">
-      <a class="nav-link" href="farmers.php">Farmers</a>
+      <a class="nav-link" href="farmers.php">Raisers</a>
       </li>
 
       <li class="nav-item <?php if (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'generateqrcodes'): ?>
